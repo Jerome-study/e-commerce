@@ -20,7 +20,8 @@ import axios from "axios";
 export const instance = axios.create({
   baseURL: import.meta.VITE_BASE_URL || "http://localhost:5000",
   withCredentials: true
-})
+});
+
 export const AppContext = createContext();
 
 
