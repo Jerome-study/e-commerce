@@ -9,7 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export const HomeInfo = (props) => {
     const navigate = useNavigate();
     const { isValid, userId, toggle, setToggle} = props;
-    const [category, categoryLoading, categoryError] = useFetch(import.meta.env.VITE_PRODUCT_API);
+    const [category, categoryLoading, categoryError] = useFetch(import.meta.env.VITE_CATEGORY_API);
     const [isActive, setIsActive] = useState([]);
     const [firstLoad, setFirstLoad] = useState(true);
     const [search, setSearch] = useState(null);
