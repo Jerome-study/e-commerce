@@ -1,6 +1,6 @@
 const { userModel, userCommerceModel } = require('../config/database');
 const { generateHashPassword } = require('../utils/bcrypt');
-
+require('dotenv').config();
 
 async function registerUser (req,res) {
     try {

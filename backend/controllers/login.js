@@ -1,6 +1,6 @@
 const { userModel } = require('../config/database');
 const { comparePassword } = require('../utils/bcrypt');
-
+require('dotenv').config();
 
 async function loginUser (req,res) {
     try {

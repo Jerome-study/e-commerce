@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const router = express.Router();
 const { isAuth } = require("../middlewares/isAuth");
 const { userCommerceModel } = require("../config/database");
