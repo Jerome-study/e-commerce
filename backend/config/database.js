@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const connectionString = process.env.MONGOURL;
+const connectionString = process.env.MONGOURL || "mongodb://0.0.0.0:27017/e_Commerce";
 
 mongoose.connect(connectionString).then((res) => {
     console.log("Connected to database");
