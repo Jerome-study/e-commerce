@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
-
-const connectionString = process.env.MONGOURL || "mongodb://0.0.0.0:27017/e_Commerce";
+require('dotenv').config();
+const connectionString = process.env.MONGO_URL;
 
 mongoose.connect(connectionString).then((res) => {
     console.log("Connected to database");
-}).catch((err) => console.log(err));
+}).catch((err) => console.log("error"));
 
 
 // Schema
