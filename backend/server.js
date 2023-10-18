@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.set("trust proxy", 1);
-
+app.enable('tru')
 // Environment Vairable
 require('dotenv').config();
 
@@ -53,7 +53,8 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     store: store,
-    cookie: cookieConfig
+    cookie: cookieConfig,
+    proxy: true
 }));
 
 
