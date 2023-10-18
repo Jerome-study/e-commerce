@@ -30,11 +30,14 @@ const cookieConfig = {
     httpOnly: true
 }
 
-
+if (process.env.NODE_ENV == "production") {
+    cookieConfig.secure = true
+    cookieConfig.sameSite = "none"
+}
 
 // Cors Config
 app.use(cors({
-    origin: process.env.ORIGINURL || "http://localhost:5173",
+    origin: process.env.ORIGINURL,
     credentials: true
 }));
 
@@ -69,6 +72,5 @@ app.get("/isLoggedIn", (req,res) => {
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log(process.env.ORIGINURL);
     console.log(`Server is running on port ${port}`);
 });
