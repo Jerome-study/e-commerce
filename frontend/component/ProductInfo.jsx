@@ -61,7 +61,8 @@ export const ProductInfo = (props) => {
         try {
             const response = await instance.post("/api/addToCart",  {item, userId});
             if (response.statusText == "OK") {
-                return navigate(0);
+                console.log("add")
+                return location.reload();
             }
         } catch(error) {
             setError(error);
@@ -75,6 +76,7 @@ export const ProductInfo = (props) => {
         try {
             const response = await instance.post("/api/removeFromCart",  {item, userId});
             if (response.statusText == "OK") {
+                console.log("refresh");
                 return navigate(0);
             }
         } catch(error) {
