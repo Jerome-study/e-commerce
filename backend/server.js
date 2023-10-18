@@ -30,10 +30,7 @@ const cookieConfig = {
     httpOnly: true
 }
 
-if (process.env.NODE_ENV == "production") {
-    cookieConfig.secure = true
-    cookieConfig.sameSite = "none"
-}
+
 
 // Cors Config
 app.use(cors({
