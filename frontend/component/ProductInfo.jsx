@@ -129,7 +129,7 @@ export const ProductInfo = (props) => {
                 <img src= {item?.thumbnail} />
                 <div className="cart-buy-button">
                     <button className="green">Buy Now</button>
-                    {inCart? <button className="blue" onClick={() =>removeFromCart}>Remove in Cart</button>: <button className="blue" onClick={() => addToCart}>Add To Cart</button>}
+                    {inCart? <button className="blue" onClick={() =>removeFromCart()}>Remove in Cart</button>: <button className="blue" onClick={() => addToCart()}>Add To Cart</button>}
                 </div>
                 
                 <div>
