@@ -72,5 +72,6 @@ app.get("/isLoggedIn", (req,res) => {
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
+    console.log(process.env.ORIGINURL);
     console.log(`Server is running on port ${port}`);
 });
