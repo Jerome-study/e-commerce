@@ -18,7 +18,7 @@ import { ProfileInCart } from "../Pages/ProfileInCart";
 import { NotFoundPage } from '../Pages/error';
 import axios from "axios";
 export const instance = axios.create({
-  baseURL: import.meta.env.VITE_BASE_URL || "http://localhost:5000",
+  baseURL: import.meta.env.VITE_BASE_URL,
   withCredentials: true
 });
 
