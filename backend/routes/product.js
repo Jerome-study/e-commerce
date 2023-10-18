@@ -6,41 +6,46 @@ const router = express.Router();
 
 router.get("/category/:category", async (req,res) => {
     // Get the categories
-    const categoryResponse = await fetch(process.env.PRODUCT_CATEGORIES_URL, {
-        method: 'GET'
-    });
-    const categoryData = await categoryResponse.json();
-
-    // Check the params category if it exist in the categoryResponse
-    const valid = await categoryData.find(category => req.params.category === category)
-    
-
-    // All products
-    const allProductsResponse = await fetch(process.env.PRODUCT_API);
-    const allProductsData = await allProductsResponse.json();
-
-
-    // If not exist throw a message
-    if(!valid) {
-        return res.send({results: allProductsData});
-    }
-
-    // If exist
     try {
-
-
-        const categoryProductsResponse = await fetch(process.env.PRODUCT_CATEGORY_URL + req.params.category);
-        const categoryProductsData = await categoryProductsResponse.json();
-        // If user is login
-        if (req.session.user) {
-            return res.send({results: categoryProductsData});
-        }
+        const categoryResponse = await fetch(process.env.PRODUCT_CATEGORIES_URL, {
+            method: 'GET'
+        });
+        const categoryData = await categoryResponse.json();
+    
+        // Check the params category if it exist in the categoryResponse
+        const valid = await categoryData.find(category => req.params.category === category)
         
-        // If user is not login
-        res.send({results: categoryProductsData});
+    
+        // All products
+        const allProductsResponse = await fetch(process.env.PRODUCT_API);
+        const allProductsData = await allProductsResponse.json();
+    
+    
+        // If not exist throw a message
+        if(!valid) {
+            return res.send({results: allProductsData});
+        }
+    
+        // If exist
+        try {
+    
+    
+            const categoryProductsResponse = await fetch(process.env.PRODUCT_CATEGORY_URL + req.params.category);
+            const categoryProductsData = await categoryProductsResponse.json();
+            // If user is login
+            if (req.session.user) {
+                return res.send({results: categoryProductsData});
+            }
+            
+            // If user is not login
+            res.send({results: categoryProductsData});
+        } catch(error) {
+            res.send({message: error.message});
+        }    
     } catch(error) {
-        res.send({message: error.message});
-    }    
+        console.log(error.message);
+    }
+    
 });
 
 
