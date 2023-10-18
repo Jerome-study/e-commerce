@@ -37,7 +37,7 @@ if (process.env.NODE_ENV == "production") {
 
 // Cors Config
 app.use(cors({
-    origin: process.env.ORIGINURL,
+    origin: process.env.ORIGINURL || "http://localhost:5173",
     credentials: true
 }));
 
