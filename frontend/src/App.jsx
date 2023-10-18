@@ -18,7 +18,7 @@ import { ProfileInCart } from "../Pages/ProfileInCart";
 import { NotFoundPage } from '../Pages/error';
 import axios from "axios";
 export const instance = axios.create({
-  baseURL: import.meta.VITE_BASE_URL,
+  baseURL: import.meta.env.VITE_BASE_URL || "http://localhost:5000",
   withCredentials: true
 });
 
@@ -33,7 +33,6 @@ function App() {
   const [isClick, setIsClick] = useState(false);
   const [toggle, setToggle] = useState(true);
   const inPageNotFound = location.pathname.includes("/404");
-
   if (error) {
     return <h1>{error}</h1>
   }
