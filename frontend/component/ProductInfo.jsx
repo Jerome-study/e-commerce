@@ -56,16 +56,19 @@ export const ProductInfo = (props) => {
 
     const addToCart = async () => {
         if (!isValid) {
+            console.log("hello")
             return alert("Please login first");
         }
         try {
             const response = await instance.post("/api/addToCart",  {item, userId});
             if (response.statusText == "OK") {
+                console.log("add")
                 return document.location.reload();
             }
         } catch(error) {
             return setError(error);
         }
+        refetch();
     };
 
     const removeFromCart = async () => {
@@ -76,11 +79,12 @@ export const ProductInfo = (props) => {
             const response = await instance.post("/api/removeFromCart",  {item, userId});
             if (response.statusText == "OK") {
                 console.log("remove")
-                return navigate(0);
+                return document.location.reload();
             }
         } catch(error) {
             return setError(error);
         }
+        refetch();
     };
 
     
