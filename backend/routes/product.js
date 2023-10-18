@@ -29,9 +29,7 @@ router.get("/category/:category", async (req,res) => {
     try {
 
 
-        const categoryProductsResponse = await fetch(process.env.PRODUCT_CATEGORY_URL + req.params.category, {
-            method: "GET"
-        });
+        const categoryProductsResponse = await fetch(process.env.PRODUCT_CATEGORY_URL + req.params.category);
         const categoryProductsData = await categoryProductsResponse.json();
         // If user is login
         if (req.session.user) {
