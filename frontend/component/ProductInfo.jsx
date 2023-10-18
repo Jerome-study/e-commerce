@@ -61,7 +61,7 @@ export const ProductInfo = (props) => {
         try {
             const response = await instance.post("/api/addToCart",  {item, userId});
             if (response.statusText == "OK") {
-                return navigate(0);
+                return document.location.reload();
             }
         } catch(error) {
             return setError(error);
@@ -75,12 +75,12 @@ export const ProductInfo = (props) => {
         try {
             const response = await instance.post("/api/removeFromCart",  {item, userId});
             if (response.statusText == "OK") {
+                console.log("remove")
                 return navigate(0);
             }
         } catch(error) {
             return setError(error);
         }
-        
     };
 
     
