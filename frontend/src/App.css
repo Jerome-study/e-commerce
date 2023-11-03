@@ -37,6 +37,10 @@ body {
     margin-inline: auto;
 }
 
+.section {
+    padding: 1em 0;
+}
+
 /* Search Section */
 
 input[typeOf = "search"] {
@@ -178,13 +182,14 @@ input[typeOf = "search"] {
 
 
 .product-box {
-    border: 3px solid black;
     border-radius: 8px;
+    background-color: #fff;
     width: 100%;
     max-width: 200px;
     margin-inline: auto;
     cursor: pointer;
     transition: transform .2s;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
     
 }
 
@@ -265,10 +270,15 @@ input[typeOf = "search"] {
     font-weight: 300;
 }
 
+
 .product-details {
     text-align: center;
+    margin-bottom: 1em;
 }
 
+.product-stamp {
+    margin: .5em 0;
+}
 
 .product-details p {
     font-weight: 400;
@@ -280,6 +290,14 @@ input[typeOf = "search"] {
     font-size: 16px;
 }
 
+.product-details-description {
+    white-space: nowrap;
+}
+
+.overflow {
+    overflow: scroll;
+}
+
 .product-images {
     display: flex;
     overflow-x: scroll;
@@ -287,9 +305,17 @@ input[typeOf = "search"] {
     gap: 1em;
 }
 
+.product-details-thumbnail {
+    min-width: 150px; ;
+    width: 100%;
+    min-height: 150px;
+    height: 170px;
+    object-fit: cover;
+}
+
 .product-images img {
-   min-width: 80px;
-   max-width: 150px;
+  min-height: 75px;
+  height: 100px;
 }
 
 .product-stamp {
@@ -355,4 +381,76 @@ input[typeOf = "search"] {
     font-size: 28px;
     font-weight: 200;
     text-align: center;
+}
+
+/* login register */
+.fill-up h1 {
+    font-size: 24px;
+    text-align: center;
+}
+
+.message-login {
+    color: red;
+}
+
+.fill-up input {
+    width: 100%;
+    margin-bottom: .5em;
+}
+
+.fill-up button {
+    width: 100%;
+    margin-bottom: .5em;
+    background-color: #00308F;
+    outline: none;
+    border-radius: 5px;
+    padding: .1em 0;
+    border: none;
+    color: #FFF;
+    transition: all 0.3s ease 0s;
+}
+
+.fill-up button:hover {
+    background-color: green;
+}
+
+
+.fill-up label {
+    color: rgb(103, 103, 103);
+    font-weight: 300;
+}
+
+.centered {
+    min-height: 100vh;
+}
+
+/* My Profile */
+
+.profile-info {
+    border: 1px solid #000000;
+    padding: .5em;
+    border-radius: 5px;
+}
+
+.profile-no-info {
+    border: 1px solid #000000;
+    padding: 1.25em;
+    border-radius: 5px;
+}
+
+.margin-bottom {
+    margin-bottom: 1em;
+}
+
+.edit-profile-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #00308F;
+}
+
+/* Edit Page */
+
+.width-100 {
+    width: 100%;
 }

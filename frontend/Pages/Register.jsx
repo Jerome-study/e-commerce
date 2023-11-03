@@ -51,13 +51,12 @@ export const Register = () => {
 
     return(
         <>
-            <div className="section">
+            <div className="section fill-up">
                 <div className="container">
                     <form onSubmit={handleSubmit(onSubmit, onerror)}>
                         <div className="credentials">
                             <h1>Credentials</h1>
                             <p>Required</p>
-                            {message? message: null}
                             <div>
                                 <label htmlFor="username">Username</label>
                                 <input type="text" name="username" {...register("username")}/>
@@ -94,6 +93,7 @@ export const Register = () => {
                             </div>
                         </div>
                         <button type="submit">Register</button>
+                        {message? <p className="message-login">{message}</p>: null}
                     </form>
                 </div>
             </div>

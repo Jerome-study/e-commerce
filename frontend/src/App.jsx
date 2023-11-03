@@ -16,6 +16,7 @@ import { ProductSearchView } from '../Pages/ProductSearchView';
 import { ProductSearchViewUser } from '../Pages/ProductSearchViewUser';
 import { ProfileInCart } from "../Pages/ProfileInCart";
 import { NotFoundPage } from '../Pages/error';
+import { EditPage } from '../Pages/Edit';
 import axios from "axios";
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_BASE_URL,
@@ -52,6 +53,7 @@ function App() {
                   <Route path="/productView/:id/:product" element={ < ProductViewUser />}></Route>
                   <Route path="/productSearchViewUser/:id/:product" element={ < ProductSearchViewUser />}></Route>
                   <Route path="/inCart/:id"  element={ <ProfileInCart/> }/>
+                  <Route path="/edit"  element={ <EditPage /> }/>
                 </Route>
                 {/* Public Routes */}
                 <Route path='/home' element={ <Home />}></Route>

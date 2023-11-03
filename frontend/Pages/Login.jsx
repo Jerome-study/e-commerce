@@ -51,10 +51,9 @@ export const Login = () => {
 
     return(
         <>
-            <div className="section">
-                <div className="container">
+            <div className="section fill-up">
+                <div className="container centered">
                     <h1>Login</h1>
-                    {message}
                     <form>
                         <div>
                             <label htmlFor="username">Username</label>
@@ -66,6 +65,7 @@ export const Login = () => {
                          </div>
                         <button onClick={(e) => doLogin(e)}>Login</button>
                     </form>
+                    {message? <p className="message-login">{message}</p>: null}
                 </div>
             </div>
         </>

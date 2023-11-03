@@ -127,8 +127,8 @@ export const ProductInfo = (props) => {
             </div>: null}
             <div className="container" style={{ position: "relative"}} onClick={() => setSearch(null)}>
             <SearchSection search={searchBar} searchDataLoading= {searchDataLoadingInput} searchData={searchDataInput} setSearch={setSearch} viewProduct={viewProduct} viewSearchProduct={viewSearchProduct}/>
-            <div >
-                <img src= {item?.thumbnail} />
+            <div className="section">
+                <img src= {item?.thumbnail} className="product-details-thumbnail" />
                 <div className="cart-buy-button">
                     <button className="green">Buy Now</button>
                     {inCart? <button className="blue" onClick={() =>removeFromCart()}>Remove in Cart</button>: <button className="blue" onClick={() => addToCart()}>Add To Cart</button>}
@@ -142,7 +142,9 @@ export const ProductInfo = (props) => {
                     </div>
                     <div className="product-details">
                         <p>Description:</p>
-                        <span >{item?.description}</span>
+                        <div className="overflow">
+                            <span className="product-details-description">{item?.description}</span>
+                        </div>
                     </div>
                     <div className="product-details">
                         <p>Stock:</p>
@@ -156,7 +158,7 @@ export const ProductInfo = (props) => {
                 
                 <div>
                     <h1 className="product-stamp">Gallery</h1>
-                    <div className="product-images">
+                    <div className="product-images" style={{justifyContent: item.images.length <= 3? "center": null}}>
                     {item.images.map((image,index) => {
                         return <img onClick={() => {setImage(image),setViewImage(true)}} key={index} src= {image} />
                     })}
