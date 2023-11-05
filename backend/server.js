@@ -2,6 +2,7 @@ const express = require("express");
 const authRoute = require("./routes/auth");
 const homeRoute = require("./routes/homeRoute");
 const apiRoute = require("./routes/product");
+const editRoute = require("./routes/edit");
 const cors = require('cors');
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
@@ -63,6 +64,7 @@ app.use(session({
 app.use("/authentication", authRoute);
 app.use("/home", homeRoute);
 app.use("/api", apiRoute);
+app.use("/edit", editRoute);
 app.get("/isLoggedIn", (req,res) => {
     if (req.session.isAuth) {
         
