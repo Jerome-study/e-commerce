@@ -33,6 +33,7 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [isClick, setIsClick] = useState(false);
   const [toggle, setToggle] = useState(true);
+  const [navToggle, setNavToggle] = useState(true);
   const inPageNotFound = location.pathname.includes("/404");
   if (error) {
     return <h1>{error}</h1>
@@ -40,10 +41,10 @@ function App() {
 
   return (
     <>
-          <AppContext.Provider value={{isValid, isLoading, setIsValid, userId, render, isActive, toggle, setToggle}}>
+          <AppContext.Provider value={{isValid, isLoading, setIsValid, userId, render, isActive, toggle, setToggle, navToggle, setNavToggle}}>
             
               {!inPageNotFound? <Navbar setIsActive={setIsActive} isActive ={isActive} isClick={isClick} setIsClick={setIsClick}  />: null}
-              <div className={isActive? "nav-active body":"body"} onClick={() => isActive?setIsClick(true): null} >
+            <div className={isActive? "nav-active body":"body"} onClick={() => {isActive?setIsClick(true): null; navToggle? setNavToggle(false): setNavToggle(true)}} >
                   <Routes>
                 {/* Protected Routes */}
                 <Route element={< Protected />}>

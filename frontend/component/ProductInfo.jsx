@@ -127,8 +127,12 @@ export const ProductInfo = (props) => {
             </div>: null}
             <div className="container" style={{ position: "relative"}} onClick={() => setSearch(null)}>
             <SearchSection search={searchBar} searchDataLoading= {searchDataLoadingInput} searchData={searchDataInput} setSearch={setSearch} viewProduct={viewProduct} viewSearchProduct={viewSearchProduct}/>
-            <div className="section">
-                <img src= {item?.thumbnail} className="product-details-thumbnail" />
+            <div className="section product-info-mobile">
+                <div>
+                    <img src= {item?.thumbnail}  className="product-details-thumbnail mobile-thumbnail-img" />
+                    <img src= {item?.thumbnail}  className="desktop-thumbnail-img product-details-thumbnail "/>
+                </div>
+                
                 <div className="cart-buy-button">
                     <button className="green">Buy Now</button>
                     {inCart? <button className="blue" onClick={() =>removeFromCart()}>Remove in Cart</button>: <button className="blue" onClick={() => addToCart()}>Add To Cart</button>}
@@ -155,6 +159,52 @@ export const ProductInfo = (props) => {
                         <span>{item?.price}</span>
                     </div>
                 </div>
+                
+                <div>
+                    <h1 className="product-stamp">Gallery</h1>
+                    <div className="product-images" style={{justifyContent: item.images.length <= 3? "center": null}}>
+                    {item.images.map((image,index) => {
+                        return <img onClick={() => {setImage(image),setViewImage(true)}} key={index} src= {image} />
+                    })}
+                </div>
+                </div>
+
+            </div>
+
+
+            <div className="section ">
+                <div className="product-info-flex">
+                    <img src= {item?.thumbnail}  className="desktop-thumbnail-img product-details-thumbnail "/>
+                    <div>
+                        <h1 className="product-stamp">Details</h1>
+                        <div className="product-details">
+                            <p>Product:</p>
+                            <span>{item?.title}</span>
+                        </div>
+                        <div className="product-details">
+                            <p>Description:</p>
+                            <div className="overflow">
+                                <span className="product-details-description">{item?.description}</span>
+                            </div>
+                        </div>
+                        <div className="product-details">
+                            <p>Stock:</p>
+                            <span>{item?.stock}</span>
+                        </div>
+                        <div className="product-details">
+                            <p>Price:</p>
+                            <span>{item?.price}</span>
+                        </div>
+                        <div className="cart-buy-button">
+                            <button className="green">Buy Now</button>
+                            {inCart? <button className="blue" onClick={() =>removeFromCart()}>Remove in Cart</button>: <button className="blue" onClick={() => addToCart()}>Add To Cart</button>}
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+    
                 
                 <div>
                     <h1 className="product-stamp">Gallery</h1>

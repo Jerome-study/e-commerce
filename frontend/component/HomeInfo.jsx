@@ -46,7 +46,8 @@ export const HomeInfo = (props) => {
 
     useEffect(() => {
         setSearch(null);
-    }, [toggle])
+    }, [toggle]);
+
 
     return(
         <div>
@@ -62,7 +63,7 @@ export const HomeInfo = (props) => {
 export function SearchSection (props) {
     const { search, searchDataLoading, searchData, setSearch, viewProduct, viewSearchProduct} = props
     return(
-        <div className="search-section">
+        <div className="search-section search-section-mobile">
                     <div>
                         <input type="text" onChange={(e) => setSearch(e.target.value)} typeof="search"/>
                         <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={viewSearchProduct} />
