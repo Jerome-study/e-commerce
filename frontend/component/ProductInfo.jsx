@@ -172,7 +172,7 @@ export const ProductInfo = (props) => {
             </div>
 
 
-            <div className="section ">
+            <div className="section product-info-desktop">
                 <div className="product-info-flex">
                     <img src= {item?.thumbnail}  className="desktop-thumbnail-img product-details-thumbnail "/>
                     <div>
