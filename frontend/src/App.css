@@ -44,7 +44,7 @@ body {
 
 /* Search Section */
 
-input[typeOf = "search"] {
+.search {
     width: 100%;
     border: 3px solid #00B4CC;
     padding: 2px;
@@ -55,6 +55,11 @@ input[typeOf = "search"] {
     color: #9DBFAF;
     background-color: transparent;
 }
+
+.border {
+    border-radius: 5px;
+}
+
 
 .search-section {
     width: 100%;
@@ -132,6 +137,12 @@ input[typeOf = "search"] {
     width: 100%;
     align-items: center;
     gap: .5em;
+}
+
+.logout-btn {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 @media(min-width: 868px) {

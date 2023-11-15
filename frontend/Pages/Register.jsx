@@ -69,7 +69,7 @@ export const Register = () => {
 
                             <div>
                                 <label htmlFor="confirmPassword">Confirm Password</label>
-                                <input type="confirmPassword" name="confirmPassword" {...register("confirmPassword")}/>
+                                <input type="password" name="confirmPassword" {...register("confirmPassword")}/>
                             </div>
                         </div>
                         <div className="address">

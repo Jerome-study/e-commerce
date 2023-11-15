@@ -65,7 +65,7 @@ export function SearchSection (props) {
     return(
         <div className="search-section search-section-mobile">
                     <div>
-                        <input type="text" onChange={(e) => setSearch(e.target.value)} typeof="search"/>
+                        <input type="text" onChange={(e) => setSearch(e.target.value)} style={{borderRadius:search < 1?"5px": "5px 5px 0 0"}} className= "search"/>
                         <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={viewSearchProduct} />
                     </div>
                     {!search? null: 

@@ -12,7 +12,7 @@ export const Navbar = (props) => {
     const { isValid, userId, render, toggle, setToggle, navToggle } = useContext(AppContext);
     const [showNav, setShowNav] = useState(false);
     const [searchBar, setSearch] = useState(null);
-    const [searchDataInput, searchDataLoadingInput, searchDataErrorInput] = useFetch(import.meta.env.VITE_SEARCH_PRODUCT_API + searchBar);
+    const [searchDataInput, searchDataLoadingInput, searchDataErrorInput, refetch, setData] = useFetch(import.meta.env.VITE_SEARCH_PRODUCT_API + searchBar);
     const paths = ["register", "login"];
     const paths2 = ["profile", "inCart"]
     const inProfileCart = paths2.some(p => location.pathname.includes(p));
@@ -82,8 +82,8 @@ export const Navbar = (props) => {
         setSearch(null)
     }, [navToggle]);
    
-
     
+
     
     return(
         <div className={isActive? "nav-active ":null}>
@@ -98,7 +98,7 @@ export const Navbar = (props) => {
                     {isValid? null:<Link to="/register"  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Register</Link>}
                     {!isValid?null:<Link to={`/profile`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Profile</Link>}
                     {isValid? <Link to={`/inCart/${userId}`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Cart</Link>: null}
-                    {isValid? <button onClick={(e) => doLogout(e)}>Logout</button>: null}
+                    {isValid? <button className="logout-btn" onClick={(e) => doLogout(e)}>Logout</button>: null}
                 </div>: null}
 
 
@@ -109,7 +109,7 @@ export const Navbar = (props) => {
                         {isValid? null:<Link to="/register"  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Register</Link>}
                         {!isValid?null:<Link to={`/profile`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Profile</Link>}
                         {isValid? <Link to={`/inCart/${userId}`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Cart</Link>: null}
-                        {isValid? <button onClick={(e) => doLogout(e)}>Logout</button>: null}
+                        {isValid? <button className="logout-btn" onClick={(e) => doLogout(e)}>Logout</button>: null}
                     </div>
                 : null}
 
@@ -120,20 +120,17 @@ export const Navbar = (props) => {
                 </div>}
             </ div>
         </div>
-       
-     
-        
-        
     )
 }
 
 
 function SearchSection (props) {
     const { search, searchDataLoading, searchData, setSearch, viewProduct, viewSearchProduct} = props
+    
     return(
         <div className="search-section nav-search-section-desktop">
                     <div>
-                        <input type="text" onChange={(e) => setSearch(e.target.value)} typeof="search"/>
+                        <input  type="text" onChange={(e) => setSearch(e.target.value)} style={{borderRadius:search < 1?"5px": "5px 5px 0 0"}} className= "search" />
                         <FontAwesomeIcon icon={faSearch} className="search-icon" onClick={viewSearchProduct} />
                     </div>
                     {!search? null: 
