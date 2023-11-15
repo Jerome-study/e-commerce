@@ -13,7 +13,10 @@ export const Navbar = (props) => {
     const [showNav, setShowNav] = useState(false);
     const [searchBar, setSearch] = useState(null);
     const [searchDataInput, searchDataLoadingInput, searchDataErrorInput] = useFetch(import.meta.env.VITE_SEARCH_PRODUCT_API + searchBar);
-
+    const paths = ["register", "login"];
+    const paths2 = ["profile", "inCart"]
+    const inProfileCart = paths2.some(p => location.pathname.includes(p));
+    const inLoginRegister = paths.some(p => location.pathname.includes(p));
 
     const doLogout = async (e) => {
         e.preventDefault();
@@ -88,7 +91,6 @@ export const Navbar = (props) => {
                 <div>
                     <Link to="/home"><h1 onClick={() => {setIsActive(false); setShowNav(false);}}  style={{ fontSize: "24px"}}>E-Commerce</h1></Link>
                 </div>
-
                 {isActive?<div className="nav-list" style={{display: showNav? "block": "none"  }}>
                     <FontAwesomeIcon icon={faXmark} size="lg" onClick={() => {setIsActive(false); setShowNav(false);}}/>
                     <Link to="/home"  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Home</Link>
@@ -98,11 +100,24 @@ export const Navbar = (props) => {
                     {isValid? <Link to={`/inCart/${userId}`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Cart</Link>: null}
                     {isValid? <button onClick={(e) => doLogout(e)}>Logout</button>: null}
                 </div>: null}
-                {showNav? null: <div >
-                    <FontAwesomeIcon icon={faBars} size="lg" onClick={() =>{setIsActive(true); setShowNav(true); setIsClick(false)}}/>
-                </div>}
 
-                <SearchSection search={searchBar} searchDataLoading= {searchDataLoadingInput} searchData={searchDataInput} setSearch={setSearch} viewProduct={viewProduct} viewSearchProduct={viewSearchProduct}/>
+
+                {!inLoginRegister?
+                    <div className="nav-hide-desktop">
+                    {!inProfileCart? <SearchSection search={searchBar} searchDataLoading= {searchDataLoadingInput} searchData={searchDataInput} setSearch={setSearch} viewProduct={viewProduct} viewSearchProduct={viewSearchProduct}/>: null}
+                        {isValid? null:<Link to="/login" style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Login</Link>}
+                        {isValid? null:<Link to="/register"  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Register</Link>}
+                        {!isValid?null:<Link to={`/profile`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Profile</Link>}
+                        {isValid? <Link to={`/inCart/${userId}`}  style={{color: "#000", textDecoration: "none"}} onClick={() => {setIsActive(false); setShowNav(false);}}>Cart</Link>: null}
+                        {isValid? <button onClick={(e) => doLogout(e)}>Logout</button>: null}
+                    </div>
+                : null}
+
+                
+
+                {showNav? null: <div >
+                    <FontAwesomeIcon className="nav-icon" icon={faBars} size="lg" onClick={() =>{setIsActive(true); setShowNav(true); setIsClick(false)}}/>
+                </div>}
             </ div>
         </div>
        
