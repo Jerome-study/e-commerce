@@ -34,7 +34,7 @@ const cookieConfig = {
 
 if (process.env.NODE_ENV == "production") {
     cookieConfig.secure = true
-    cookieConfig.sameSite = "strict"
+    cookieConfig.sameSite = "none"
 }
 
 // Cors Config
@@ -42,8 +42,6 @@ app.use(cors({
     origin: process.env.ORIGINURL,
     credentials: true
 }));
-
-
 
 const store = new MongoStore({
     mongoUrl: connectionString,
@@ -57,12 +55,7 @@ app.use(session({
     saveUninitialized: false,
     store: store,
     cookie: cookieConfig,
-    proxy: true,
-    allowedHeaders: [
-        'Access-Control-Allow-Origin',
-        'Content-Type',
-        'Authorization'
-      ]
+    proxy: true
 }));
 
 
