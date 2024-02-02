@@ -43,6 +43,15 @@ app.use(cors({
     credentials: true
 }));
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", process.env.ORIGINURL);
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 const store = new MongoStore({
     mongoUrl: connectionString,
     collectionName: "session"
