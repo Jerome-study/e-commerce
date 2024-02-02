@@ -34,8 +34,8 @@ const cookieConfig = {
 
 if (process.env.NODE_ENV == "production") {
     cookieConfig.secure = true
-    cookieConfig.sameSite = "none"
-    cookieConfig.domain = '.onrender.com'
+    cookieConfig.sameSite = "strict"
+    cookieConfig.domain = 'onrender.com'
 }
 
 // Cors Config
