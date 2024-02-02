@@ -35,7 +35,6 @@ const cookieConfig = {
 if (process.env.NODE_ENV == "production") {
     cookieConfig.secure = true
     cookieConfig.sameSite = "strict"
-    cookieConfig.domain = 'onrender.com'
 }
 
 // Cors Config
@@ -44,14 +43,7 @@ app.use(cors({
     credentials: true
 }));
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", process.env.ORIGINURL);
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested-With, Content-Type, Accept"
-    );
-    next();
-});
+
 
 const store = new MongoStore({
     mongoUrl: connectionString,
@@ -65,7 +57,12 @@ app.use(session({
     saveUninitialized: false,
     store: store,
     cookie: cookieConfig,
-    proxy: true
+    proxy: true,
+    allowedHeaders: [
+        'Access-Control-Allow-Origin',
+        'Content-Type',
+        'Authorization'
+      ]
 }));
 
 
